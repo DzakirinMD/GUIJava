@@ -3,6 +3,10 @@ package uncle;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Uncle extends JFrame implements ActionListener {
     
@@ -86,33 +90,13 @@ public class Uncle extends JFrame implements ActionListener {
         btncalculate.addActionListener ( this ) ;
         btnexit.addActionListener ( this ) ;
 
-        setSize ( 1000 , 500 ) ;
-        setVisible ( true ) ; //open
+   
         
     }
-    /**public void keyReleased(KeyEvent e) {
-         
-        // Trap all non-valid numbers
-        try {
-            Integer.parseInt(txtset.getText());
-        }
-        catch (NumberFormatException fe) {
-            txtset.setText("0");
-        }
-         
-        refreshPrice();
-    }**/
-     
-    /**
-     * Method to calculate and refresh the price display
-     **/
-    /**private void refreshPrice() {
-         
-        // Local variables used to accumulate total price
-        
-    }**/
-     
+   
     public void actionPerformed ( ActionEvent event ) {
+       
+        
         
         if ( event.getSource () == btncalculate ) {
             
@@ -180,7 +164,7 @@ public class Uncle extends JFrame implements ActionListener {
                else if ( cbopakage.getSelectedItem().toString().equals (" Set Combo " ) ) {
                     
                     double setcombo3 = 16.00 ;
-                    total = setcombo3*Amount ;
+                    total += setcombo3*Amount ;
                     totaltax = total * tax ;
                     totalprice = totaltax + total;      
                 }
@@ -191,6 +175,7 @@ public class Uncle extends JFrame implements ActionListener {
             txttax.setText (   "" + tax + "%") ;
             txtamountoftax.setText ( " RM " + Math.round(totaltax * 100.0)/100.0) ;
             txtbalance.setText ( " RM " + Math.round(totalprice * 100.0)/100.0 ) ;
+           
             
         }
         
@@ -203,6 +188,7 @@ public class Uncle extends JFrame implements ActionListener {
         
         Uncle Jack = new Uncle () ;
         
+        //display all the content
         Jack.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         Jack.setUndecorated(true);
         Jack.setVisible(true);
