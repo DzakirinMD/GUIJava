@@ -13,15 +13,18 @@ public class Uncle extends JFrame implements ActionListener {
     private JButton btnexit , btncalculate;
     private JScrollBar hgk;
     public Uncle () {
-        
-        super ( " Uncle Jack  " );
+   
+        super ( " Keyrain Chicken Restaurant " );
         
         Container cont ;
         cont = getContentPane();
         cont.setLayout ( new GridLayout ( 11 , 3 ) ) ;
         
+        JPanel panel = new JPanel();
+        
+        
         lblinst1 = new JLabel ( " Please select your menu : " );
-        lblinst2 = new JLabel ( " Ala Carte or Set Combo(with drinks and mashed potato) : " ) ;
+        lblinst2 = new JLabel ( " Ala Carte or Set Combo\n(with drinks and mashed potato) : " ) ;
         lblamount = new JLabel ( " Amount Of Tax : " ) ;
         lblset = new JLabel ( " Set : " ) ;
         lbltax = new JLabel ( " Tax : " ) ;
@@ -44,14 +47,14 @@ public class Uncle extends JFrame implements ActionListener {
         txtamountoftax = new JTextField ( 10 ) ;
         txtbalance = new JTextField ( 10 ) ;
         
-        cbxcomboA = new JCheckBox ( " Chicken Chop With Rice " ) ;
-        cbxcomboB = new JCheckBox ( " Fried Chicken With Rice " ) ;
-        cbxcomboC = new JCheckBox ( " Chicken Nugget With Rice " ) ;
+        cbxcomboA = new JCheckBox ( "<html>Chicken Chop With Rice<br>(Combo RM 12.60/ Ala Carte RM 10.00)</html>" ) ;
+        cbxcomboB = new JCheckBox ( "<html>Fried Chicken With Rice <br>(Combo RM 14.60/ Ala Carte RM 8.00)</html>" ) ;
+        cbxcomboC = new JCheckBox ( "<html>Fried Chicken With Rice <br>(Combo RM 16.00/ Ala Carte RM 6.80)</html>" ) ;
         
         btnexit = new JButton ( " Exit " ) ;
         btncalculate = new JButton ( " Calculate " ) ;
         cbopakage = new JComboBox ( new String [] { " Ala Carte " , " Set Combo " } ) ;
-   
+        
         cont.add ( lblinst1 ) ;
         cont.add ( lblblank1 ) ;
         cont.add ( lblblank2 ) ;
@@ -186,8 +189,8 @@ public class Uncle extends JFrame implements ActionListener {
                 
             txttotal.setText ( " RM " + total ) ;
             txttax.setText (   "" + tax + "%") ;
-            txtamountoftax.setText ( " RM " + totaltax ) ;
-            txtbalance.setText ( " RM " + totalprice ) ;
+            txtamountoftax.setText ( " RM " + Math.round(totaltax * 100.0)/100.0) ;
+            txtbalance.setText ( " RM " + Math.round(totalprice * 100.0)/100.0 ) ;
             
         }
         
@@ -200,6 +203,9 @@ public class Uncle extends JFrame implements ActionListener {
         
         Uncle Jack = new Uncle () ;
         
+        Jack.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        Jack.setUndecorated(true);
+        Jack.setVisible(true);
     }
 }
 
